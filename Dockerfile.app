@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip install --no-cache-dir poetry
 
 # Копируем файлы зависимостей
-COPY ../pyproject.toml poetry.lock ./
+COPY pyproject.toml poetry.lock ./
 
 # Устанавливаем зависимости без создания виртуального окружения и без dev-пакетов
 RUN poetry install --no-interaction --no-ansi --no-root
