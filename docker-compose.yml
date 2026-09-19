@@ -12,6 +12,20 @@ services:
       - ./html:/usr/share/nginx/html
     depends_on:
       - web
+
+  migrations:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+    command: python manage.py migrate
+    depends_on:
+      db:
+        condition: service_healthy
+
   web:
     build:
       context: .

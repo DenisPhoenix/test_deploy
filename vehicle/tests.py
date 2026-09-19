@@ -23,7 +23,7 @@ class VehicleTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         # проверка выводимых данных
-        self.assertEqual(response.json(), {"title": "test", "description": "test", "milage": []})
+        self.assertEqual(response.json(), {"title": "test", "description": "test", "milage": [], "price": "0.00"})
 
         # проверка создания записи в БД
         self.assertTrue(Car.objects.all())
@@ -38,4 +38,4 @@ class VehicleTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         # проверка выводимых данных
-        self.assertEqual(response.json(), [{'id': 2, 'title': 'list test', 'description': 'list test', 'last_milage': 0, 'milage': []}])
+        self.assertEqual(response.json(), [{'id': 2, 'title': 'list test', 'description': 'list test', 'last_milage': 0, 'milage': [], "price": "0.00"}])
